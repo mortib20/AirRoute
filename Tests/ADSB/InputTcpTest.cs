@@ -26,7 +26,7 @@ namespace Tests.ADSB
         }
 
         [TestMethod]
-        public void Listen()
+        public async void Listen()
         {
             CancellationTokenSource cSource = new();
             cSource.Cancel();
@@ -35,7 +35,7 @@ namespace Tests.ADSB
                 Assert.AreEqual(InputStatus.Listening, input.Status);
             };
 
-            _ = input.Listen(cSource.Token);
+            await input.Listen(cSource.Token);
             Assert.AreEqual(InputStatus.Stopped, input.Status);
         }
 
