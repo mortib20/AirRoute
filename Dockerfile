@@ -12,4 +12,4 @@ RUN apk add dotnet7-sdk
 WORKDIR /app
 COPY --from=build /build /app
 
-CMD ["./AirRoute"]
+CMD ["./AirRouteConsole"]
