@@ -9,7 +9,7 @@ namespace ADSB.Output
         private readonly ILogger _logger;
         private readonly TcpOutput Output;
 
-        // Properies
+        // Properties
         public OutputServiceStatus Status { get; private set; }
         public bool Started => Status == OutputServiceStatus.Started;
         public bool Stopped => Status == OutputServiceStatus.Stopped;
@@ -35,10 +35,9 @@ namespace ADSB.Output
             {
                 await Output.WriteAsync(buffer, cancellationToken);
             }
-            catch (IOException)
+            catch (Exception)
             {
                 Status = OutputServiceStatus.Failed;
-                throw;
             }
         }
 
